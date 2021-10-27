@@ -1,9 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodeHtmlToImage from 'node-html-to-image';
+import { getPuppeteerOptions } from '../../src/utils/puppeteer';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const { title, logoUrl } = req.query;
     const image = await nodeHtmlToImage({
+        puppeteerArgs: await getPuppeteerOptions(),
         html: `<html> <head>
         <style>
           @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap");
