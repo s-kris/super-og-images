@@ -1,0 +1,3 @@
+- NextJS 
+- Chakra UI
+- Typescript
