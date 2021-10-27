@@ -1,20 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodeHtmlToImage from 'node-html-to-image';
-//@ts-ignore
-import font2base64 from 'node-font2base64';
-import fs from 'fs';
-import path from 'path';
-
-const dir = path.resolve('./src/fonts/Inter-Regular.ttf');
-const fontPath = fs.readdirSync(dir);
-const _fontData = font2base64.encodeToDataUrlSync(fontPath);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const { title, logoUrl } = req.query;
     const image = await nodeHtmlToImage({
         html: `<html> <head>
         <style>
-          @import url(${_fontData});
+          @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap");
           
           body {
             font-family: 'Inter';
