@@ -2,8 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nodeHtmlToImage from 'node-html-to-image';
 //@ts-ignore
 import font2base64 from 'node-font2base64';
+import fs from 'fs';
+import path from 'path';
 
-const _fontData = font2base64.encodeToDataUrlSync(process.cwd() + '/src/fonts/Inter-Regular.ttf');
+const dir = path.resolve('./src/fonts/Inter-Regular.ttf');
+const fontPath = fs.readdirSync(dir);
+const _fontData = font2base64.encodeToDataUrlSync(fontPath);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const { title, logoUrl } = req.query;
