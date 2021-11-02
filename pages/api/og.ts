@@ -40,7 +40,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         </style>
       </head><body>
       <div class="root-container">
-      <img src="${logoUrl}" class="logo" />
+      <img src="${
+          logoUrl ||
+          'https://d33wubrfki0l68.cloudfront.net/cdc4a3833bd878933fcc131655878dbf226ac1c5/10cd6/images/logo_bolt_small.png'
+      }" class="logo" />
       <span class="title">${title || 'title not provided'}</span>
       </div></body></html>`,
     });
