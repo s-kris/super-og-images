@@ -2,13 +2,23 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nodeHtmlToImage from 'node-html-to-image';
 import { getPuppeteerOptions } from '../../src/utils/puppeteer';
 
+const defaultValues = {
+    logoUrl:
+        'https://d33wubrfki0l68.cloudfront.net/cdc4a3833bd878933fcc131655878dbf226ac1c5/10cd6/images/logo_bolt_small.png',
+    titleFontName: 'Inter',
+    titleFontSize: '48px',
+    title: 'Sample title for the OG mage',
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const { title, logoUrl } = req.query;
     const image = await nodeHtmlToImage({
         puppeteerArgs: await getPuppeteerOptions(),
         html: `<html> <head>
         <style>
-          @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=${
+              defaultValues.titleFontName
+          }:ital,wght@0,400;0,700;1,400;1,700&display=swap");
           
           body {
             font-family: 'Inter';
@@ -33,18 +43,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
 
           .title {
-            font-size: 48px;
+            font-size: ${defaultValues.titleFontSize};
             font-weight: bold;
             letter-spacing: -0.005em;
         }
         </style>
       </head><body>
       <div class="root-container">
-      <img src="${
-          logoUrl ||
-          'https://d33wubrfki0l68.cloudfront.net/cdc4a3833bd878933fcc131655878dbf226ac1c5/10cd6/images/logo_bolt_small.png'
-      }" class="logo" />
-      <span class="title">${title || 'title not provided'}</span>
+      <img src="${logoUrl || defaultValues.logoUrl}" class="logo" />
+      <span class="title">${title || defaultValues.title}</span>
       </div></body></html>`,
     });
     res.writeHead(200, { 'Content-Type': 'image/png' });
