@@ -11,9 +11,11 @@ const DemoPage: NextPage = ({ query }: any) => {
                 <title>{title}</title>
                 <meta
                     property="og:image"
-                    content={`https://super-og-images.vercel.app/api/og?${new URLSearchParams(
-                        query,
-                    ).toString()}`}
+                    content={`${
+                        process.env.NEXT_PUBLIC_VERCEL_ENV
+                            ? 'https://superblog.ai/og/api/image'
+                            : '/api/image'
+                    }?${new URLSearchParams(query).toString()}`}
                 />
                 <meta property="og:title" content={title} />
                 <meta property="og:type" content="article" />
