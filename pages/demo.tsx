@@ -14,7 +14,17 @@ const DemoPage: NextPage = ({ query }: any) => {
                     content={`https://super-og-images.vercel.app/api/og?${new URLSearchParams(
                         query,
                     ).toString()}`}
-                    data-svelte="svelte-u7smxf"
+                />
+                <meta property="og:title" content={query} />
+                <meta property="og:type" content="article" />
+
+                <meta property="twitter:title" content={query} />
+                <meta property="twitter:description" content="Sample page for OG image demo" />
+                <meta
+                    property="twitter:image"
+                    content={`https://super-og-images.vercel.app/api/og?${new URLSearchParams(
+                        query,
+                    ).toString()}`}
                 />
             </Head>
             <Heading size="2xl" mb={10} letterSpacing="-0.05em">
