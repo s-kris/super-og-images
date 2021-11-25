@@ -15,10 +15,10 @@ const DemoPage: NextPage = ({ query }: any) => {
                         query,
                     ).toString()}`}
                 />
-                <meta property="og:title" content={query} />
+                <meta property="og:title" content={title} />
                 <meta property="og:type" content="article" />
 
-                <meta property="twitter:title" content={query} />
+                <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content="Sample page for OG image demo" />
                 <meta
                     property="twitter:image"
