@@ -5,29 +5,20 @@ import Head from 'next/head';
 
 const DemoPage: NextPage = ({ query }: any) => {
     const { title } = query;
+    const ogImageUrl = `${
+        process.env.NEXT_PUBLIC_VERCEL_ENV ? 'https://superblog.ai/og/api/image' : '/api/image'
+    }?${new URLSearchParams(query).toString()}`;
     return (
         <VStack p={10}>
             <Head>
                 <title>{title}</title>
-                <meta
-                    property="og:image"
-                    content={`${
-                        process.env.NEXT_PUBLIC_VERCEL_ENV
-                            ? 'https://superblog.ai/og/api/image'
-                            : '/api/image'
-                    }?${new URLSearchParams(query).toString()}`}
-                />
+                <meta property="og:image" content={ogImageUrl} />
                 <meta property="og:title" content={title} />
                 <meta property="og:type" content="article" />
 
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content="Sample page for OG image demo" />
-                <meta
-                    property="twitter:image"
-                    content={`https://super-og-images.vercel.app/api/og?${new URLSearchParams(
-                        query,
-                    ).toString()}`}
-                />
+                <meta property="twitter:image" content={ogImageUrl} />
             </Head>
             <Heading size="2xl" mb={10} letterSpacing="-0.05em">
                 {title || 'Demo Page'}
