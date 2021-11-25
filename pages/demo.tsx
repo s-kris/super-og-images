@@ -19,6 +19,7 @@ const DemoPage: NextPage = ({ query }: any) => {
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content="Sample page for OG image demo" />
                 <meta property="twitter:image" content={ogImageUrl} />
+                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <Heading size="2xl" mb={10} letterSpacing="-0.05em">
                 {title || 'Demo Page'}
