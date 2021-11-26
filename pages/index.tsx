@@ -53,8 +53,9 @@ const IndexPage: NextPage = () => {
         process.env.NEXT_PUBLIC_VERCEL_ENV ? 'https://superblog.ai/og/api/image' : '/api/image'
     }?title=${title}`;
     return (
-        <Flex w="100%" justifyContent="center">
+        <Flex w="100%" justifyContent="center" p={10} wordBreak="break-word">
             <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>{title} | Superblog</title>
                 <meta property="og:image" content={ogImageUrl} />
                 <meta property="og:title" content={title} />
@@ -64,7 +65,7 @@ const IndexPage: NextPage = () => {
                 <meta property="twitter:image" content={ogImageUrl} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <VStack p={10} spacing={5} maxW="700px">
+            <VStack spacing={5} maxW="700px">
                 <Heading size="xl" letterSpacing="-0.05em" as="h1">
                     Super OG Images
                 </Heading>
