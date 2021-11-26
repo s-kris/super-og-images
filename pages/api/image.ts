@@ -7,21 +7,35 @@ const defaultValues = {
         'https://d33wubrfki0l68.cloudfront.net/cdc4a3833bd878933fcc131655878dbf226ac1c5/10cd6/images/logo_bolt_small.png',
     titleFontName: 'Inter',
     titleFontSize: '48px',
+    titleColor: '#000000',
     title: 'Sample title for the OG mage',
+    logoWidth: '100px',
+    logoHeight: '100px',
+    background: 'white',
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-    const { title, logoUrl } = req.query;
+    const {
+        title,
+        titleFontName,
+        titleFontSize,
+        logoUrl,
+        logoWidth,
+        logoHeight,
+        background,
+        titleColor,
+    } = req.query;
+
     const image = await nodeHtmlToImage({
         puppeteerArgs: await getPuppeteerOptions(),
         html: `<html> <head>
         <style>
           @import url("https://fonts.googleapis.com/css2?family=${
-              defaultValues.titleFontName
-          }:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+              titleFontName || defaultValues.titleFontName
+          }");
           
           body {
-            font-family: 'Inter';
+            font-family: ${titleFontName || defaultValues.titleFontName};
             width: 1200px;
             height: 627px;
           }
@@ -33,19 +47,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            background: ${background || defaultValues.background};
           }
 
           .logo {
-              width: 75px;
-              height: 75px;
+              width: ${logoWidth || defaultValues.logoWidth};
+              height: ${logoHeight || defaultValues.logoHeight};
               object-fit: contain;
-              margin-bottom: 25px;
           }
 
           .title {
-            font-size: ${defaultValues.titleFontSize};
+            font-size: ${titleFontSize || defaultValues.titleFontSize};
             font-weight: bold;
             letter-spacing: -0.005em;
+            color: ${titleColor || defaultValues.titleColor};
+            padding: 50px;
         }
         </style>
       </head><body>
