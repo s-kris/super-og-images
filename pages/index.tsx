@@ -10,7 +10,6 @@ import {
     ListItem,
     Code,
 } from '@chakra-ui/react';
-import { Star } from 'react-github-buttons';
 import Head from 'next/head';
 
 const imgProps = [
@@ -72,7 +71,13 @@ const IndexPage: NextPage = () => {
                 <Text fontSize="lg" as="h2">
                     API to create opengraph images programmatically
                 </Text>
-                <Star owner="s-kris" repo="super-og-images" />
+                <ChLink
+                    isExternal
+                    href="https://github.com/s-kris/super-og-images"
+                    textDecor="underline"
+                >
+                    Github Project
+                </ChLink>{' '}
                 <Text pt={10}>
                     Use this as your open graph image source{' '}
                     <ChLink isExternal href="https://superblog.ai/og/api/image?title=hello%20world">
