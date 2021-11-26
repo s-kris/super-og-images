@@ -8,7 +8,7 @@ const defaultValues = {
     titleFontName: 'Inter',
     titleFontSize: '48px',
     titleColor: '#000000',
-    title: 'Sample title for the OG mage',
+    title: 'Sample title for the OG Image',
     logoWidth: '100px',
     logoHeight: '100px',
     background: 'white',
@@ -63,6 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             letter-spacing: -0.005em;
             color: ${titleColor || defaultValues.titleColor};
             padding: 50px;
+            line-height: 1.5;
         }
         </style>
       </head><body>
