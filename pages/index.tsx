@@ -9,6 +9,7 @@ import {
     OrderedList,
     ListItem,
     Code,
+    Image,
 } from '@chakra-ui/react';
 import Head from 'next/head';
 
@@ -132,6 +133,18 @@ const IndexPage: NextPage = () => {
                         <ListItem>PRs are welcome</ListItem>
                     </OrderedList>
                 </Flex>
+                <Text fontSize="xs">Powered by</Text>
+                <ChLink href="https://superblog.ai/" isExternal _hover={{ textDecor: 'none' }}>
+                    <Flex flexDir="row" alignItems="center">
+                        <Image
+                            src="https://superblog.ai/blog/images/logo_bolt_small.png"
+                            h={'36px'}
+                        />
+                        <Text fontWeight="bold" fontSize="2xl">
+                            superblog
+                        </Text>
+                    </Flex>
+                </ChLink>
             </VStack>
         </Flex>
     );
