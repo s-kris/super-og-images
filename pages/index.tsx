@@ -71,7 +71,11 @@ const IndexPage: NextPage = () => {
                     Super OG Images
                 </Heading>
                 <Text fontSize="lg" as="h2">
-                    API to create opengraph images programmatically
+                    API to create opengraph images programmatically.
+                </Text>
+                <Text pt={5}>
+                    Generate open graph images for your blog posts, marketing pages, documentation
+                    pages, forum pages, or anything!
                 </Text>
                 <ChLink
                     isExternal
