@@ -55,7 +55,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               ${logoWidth ? `width: ${logoWidth};` : ''}
               ${logoHeight ? `height: ${logoHeight};` : ''}
               object-fit: contain;
-              max-width: 30%;
+              width: 30%;
+              max-height: 20%;
           }
 
           .title {
