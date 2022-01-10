@@ -9,8 +9,6 @@ const defaultValues = {
     titleFontSize: '48px',
     titleColor: '#000000',
     title: 'Sample title for the OG Image',
-    logoWidth: '100px',
-    logoHeight: '100px',
     background: 'white',
 };
 
@@ -52,9 +50,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
 
           .logo {
-              width: ${logoWidth || defaultValues.logoWidth};
-              height: ${logoHeight || defaultValues.logoHeight};
+              ${logoWidth ? `width: ${logoWidth};` : ''}
+              ${logoHeight ? `height: ${logoHeight};` : ''}
               object-fit: contain;
+              max-width: 30%;
           }
 
           .title {
