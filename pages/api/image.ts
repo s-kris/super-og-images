@@ -9,6 +9,7 @@ const defaultValues = {
     titleFontSize: '48px',
     titleColor: '#000000',
     title: 'Sample title for the OG Image',
+    titleCase: 'uppercase',
     background: 'white',
 };
 
@@ -22,6 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         logoHeight,
         background,
         titleColor,
+        titleCase = defaultValues.titleCase,
     } = req.query;
 
     const image = await nodeHtmlToImage({
@@ -30,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         <style>
           @import url("https://fonts.googleapis.com/css2?family=${
               titleFontName || defaultValues.titleFontName
-          }");
+          }:wght@400;700");
           
           body {
             font-family: ${titleFontName || defaultValues.titleFontName};
@@ -58,11 +60,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
           .title {
             font-size: ${titleFontSize || defaultValues.titleFontSize};
-            font-weight: bold;
-            letter-spacing: -0.005em;
             color: ${titleColor || defaultValues.titleColor};
             padding: 50px;
             line-height: 1.5;
+            text-transform: ${titleCase};
+            ${titleCase === 'uppercase' ? `font-weight: 700;` : ''}
+            ${titleCase === 'uppercase' ? `letter-spacing: -0.005em;` : ''}
         }
         </style>
       </head><body>

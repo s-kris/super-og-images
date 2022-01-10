@@ -46,6 +46,10 @@ const imgProps = [
         name: 'background',
         type: 'css property',
     },
+    {
+        name: 'titleCase',
+        type: 'css property (text-transform)',
+    },
 ];
 
 const IndexPage: NextPage = () => {
