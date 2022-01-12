@@ -11,6 +11,7 @@ const defaultValues = {
     title: 'Sample title for the OG Image',
     titleCase: 'uppercase',
     background: 'white',
+    titleBackground: 'white',
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
@@ -24,6 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         background,
         titleColor,
         titleCase = defaultValues.titleCase,
+        titleBackground,
     } = req.query;
 
     const image = await nodeHtmlToImage({
@@ -62,11 +64,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .title {
             font-size: ${titleFontSize || defaultValues.titleFontSize};
             color: ${titleColor || defaultValues.titleColor};
-            padding: 50px;
+            padding: 25px;
+            margin-top: 50px;
             line-height: 1.5;
             text-transform: ${titleCase};
             ${titleCase === 'uppercase' ? `font-weight: 700;` : ''}
             ${titleCase === 'uppercase' ? `letter-spacing: -0.005em;` : ''}
+            background: ${titleBackground || defaultValues.titleBackground}
         }
         </style>
       </head><body>
