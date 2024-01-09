@@ -110,7 +110,7 @@ const IndexPage: NextPage = () => {
                     </Heading>
                     <ChLink
                         isExternal
-                        href="https://superblog.ai/og/api/image?title=this%20is%20an%20advanced%20image&background=linear-gradient%28to+right%2C+%238e2de2%2C+%234a00e0%29%3B&titleColor=white"
+                        href="https://superblog.ai/og/api/image?title=this%20is%20an%20advanced%20image&background=linear-gradient%28to+right%2C+%238e2de2%2C+%234a00e0%29%3B&titleColor=black"
                     >
                         <Code>
                             https://superblog.ai/og/api/image?title=this%20is%20an%20advanced%20image&background=linear-gradient%28to+right%2C+%238e2de2%2C+%234a00e0%29%3B&titleColor=white
