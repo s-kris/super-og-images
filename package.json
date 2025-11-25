@@ -1,6 +1,7 @@
 {
   "name": "super-og-images",
   "version": "0.0.1",
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "dev": "next -p 3001",
     "build": "next build",
